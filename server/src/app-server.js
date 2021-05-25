@@ -15,15 +15,15 @@ console.log(connection)
 
 app.use(cors())
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get('/', (req, res) => {
-    console.log("Working")
 })
 
-app.get('/search/:searchTerm', (req, res) => {
-    let searchTerm = req.params.searchTerm;
-
-    const SELECT_SEARCHED_PRODUCTS = ("SELECT * FROM productdetails WHERE microservices.productdetails.name LIKE '%" + searchTerm + "%'")
-
+app.post("/search", (req, res) => {
+    let input = req.body.name;
+    const SELECT_SEARCHED_PRODUCTS = ("SELECT * FROM microservices.productdetails WHERE microservices.productdetails.name LIKE '%" + input + "%'")
     connection.query(SELECT_SEARCHED_PRODUCTS, (err, results) => {
         if(err) {
             return res.send(err)
@@ -34,7 +34,7 @@ app.get('/search/:searchTerm', (req, res) => {
             })
         }
     })
-})
+});
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));

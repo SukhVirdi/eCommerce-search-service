@@ -1,12 +1,20 @@
-import * as React from 'react';
-import './App.css';
-import './components/search'
-import Search from './components/search';
+import React, { Component } from "react";
+import "./App.css";
+import SearchForBook from "./components/SearchForBook"
 
-const App = () => {
-  return (
-      <Search />
-  );
+
+class App extends Component {
+
+
+  render() {
+    return (
+      <div className="App">
+        <div className="MainBorder">
+          <SearchForBook/>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;
