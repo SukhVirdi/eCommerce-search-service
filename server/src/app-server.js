@@ -23,8 +23,7 @@ app.get('/', (req, res) => {
 
 app.post("/search", (req, res) => {
     let input = req.body.name;
-    const SELECT_SEARCHED_PRODUCTS = ("SELECT * FROM microservices.productdetails WHERE microservices.productdetails.name LIKE '%" + input + "%'")
-    connection.query(SELECT_SEARCHED_PRODUCTS, (err, results) => {
+    connection.query("SELECT * FROM ecommerce.book_details WHERE ecommerce.book_details.name LIKE ?;", "%" + input + "%", (err, results) => {
         if(err) {
             return res.send(err)
         }

@@ -42,16 +42,16 @@ class SearchForBook extends Component {
     return (
       <div>
         <h1>eCommerce Book Search Service</h1>
-        <input type="text" onChange={this.handleInput} placeholder="Enter the book name " />
+        <input type="text" onChange={this.handleInput} placeholder="Enter the name of the book" />
         <div>
        </div>
-       {this.state.returned.map((product)=>{
+       {this.state.returned.map((book)=>{
         return(
-            <div key = {product.id}>
+            <div key = {book.id}>
               <div>
                 <div>
-                  <h1>{product.name}</h1>
-                  <h2>{product.ratings}</h2>
+                  <h1>{book.name}</h1>
+                  <h2>{book.ratings}</h2>
                   <p></p>
                 </div>
               </div>
